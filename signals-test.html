@@ -3,6 +3,7 @@
 <dom-module id="signals-test">
   <template>
     <button on-click="sendSignal">Send Signal</button>
+    <button on-click="clearSignal">Clear Signal</button>
   </template>
 </dom-module>
 
@@ -11,21 +12,34 @@ Polymer({
   is: 'signals-test',
   sendSignal: function () {
     this.fire('iron-signal', {name:'hello', data: null});
+  },
+  clearSignal: function () {
+    this.fire('iron-signal', {name:'goodbye', data: null});
   }
 });
 </script>
 
 <dom-module id="signal-handler">
   <template>
+      <div style="color: red;" hidden$="{{!signalReceived}}">
+        <h3>Signal received!</h3>
+      </div>
       <iron-signals on-iron-signal-hello="onHello"></iron-signals>
+      <iron-signals on-iron-signal-goodbye="onGoodbye"></iron-signals>
   </template>
 </dom-module>
 
 <script>
 Polymer({
   is: 'signal-handler',
-  onHello: function () {
-    alert('Well, hello to YOU!');
+  ready: function () {
+    this.signalReceived = false;
+  },
+  onHello: function (e, detail, sender) {
+    this.signalReceived = true;
+  },
+  onGoodbye: function (e, detail, sender) {
+    this.signalReceived = false;
   }
 });
 </script>

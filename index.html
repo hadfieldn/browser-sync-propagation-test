@@ -1,10 +1,36 @@
 <html>
 <head>
+  <title>BrowserSync Event Propagation Demo</title>
   <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
   <link rel="import" href="bower_components/polymer/polymer.html">
   <link rel="import" href="signals-test.html">
+  <style>
+    body { max-width: 500px; font-family: sans-serif; font-size: 12px; }
+    code { color: #555; }
+    li { margin: 1em 0; }
+    ol { margin-bottom: 3em; }
+  </style>
 </head>
 <body>
+  <h2>BrowserSync Event-Propagation Demo</h2>
+  <p>This demo shows that when pages are served by BrowserSync, events
+    are propagated among all browsers that are opened to the same URL.
+  </p>
+  <h3>Instructions</h3>
+  <ol>
+    <li>Open another browser window to this same URL.</li>
+    <li>Click the Send Signal/Clear Signal buttons on any of the windows
+      that are open to this page. If the page is being served through
+      <a href="http://www.browsersync.io">BrowserSync</a>
+      (<code>gulp serve</code>), all the other windows will
+      receive the signal.</li>
+    <li>In the terminal window from which BrowserSync is serving this page,
+      terminate BrowserSync (Ctrl-C), and enter <code>http-server -p &lt;port&gt;</code>
+      to serve this page again without BrowserSync.</li>
+    <li>Now click the Send Signal button again. This time, the signal will NOT
+      propagate to the other windows.</li>
+  </oL>
+
   <signals-test></signals-test>
   <signal-handler></signal-handler>
 </body>
