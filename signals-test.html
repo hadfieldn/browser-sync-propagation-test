@@ -1,0 +1,31 @@
+<link rel="import" href="bower_components/iron-signals/iron-signals.html">
+
+<dom-module id="signals-test">
+  <template>
+    <button on-click="sendSignal">Send Signal</button>
+  </template>
+</dom-module>
+
+<script>
+Polymer({
+  is: 'signals-test',
+  sendSignal: function () {
+    this.fire('iron-signal', {name:'hello', data: null});
+  }
+});
+</script>
+
+<dom-module id="signal-handler">
+  <template>
+      <iron-signals on-iron-signal-hello="onHello"></iron-signals>
+  </template>
+</dom-module>
+
+<script>
+Polymer({
+  is: 'signal-handler',
+  onHello: function () {
+    alert('Well, hello to YOU!');
+  }
+});
+</script>
