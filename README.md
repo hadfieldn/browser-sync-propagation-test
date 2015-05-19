@@ -13,11 +13,11 @@ among all windows it is serving.
 
 ### Demonstration
 
-1. Open two or more browsers to the browser-sync URL given in the output of the
-   `serve` gulp task.
-2. Follow the instructions in the web page that opens to see that an event sent
+1. Open two or more browsers to the URL given by BrowserSync in the output of the
+   `gulp serve` command (above).
+2. In the web page that opens, follow the instructions to see that an event sent
    from one window is received by all other windows opened to the same page,
    including those in other browsers.
-3. Terminate BrowserSync (Ctrl-C) and then enter `http-server -p <port>` to serve
-   the same web page without browser-sync. This time, the signal does not
-   propagate outside the current browser window.
+3. In the terminal window from wich BrowserSync was launched, quit BrowserSync (Ctrl-C) 
+   and then enter `http-server -p <port>` to serve the same web page *without* 
+   BrowserSync. This time, the signal does not propagate outside the current browser window.
