@@ -1,6 +1,6 @@
 ## BrowserSync Event-Propagation Demo
 
-Simple test that shows how browser-sync propagates events
+Simple test that shows how BrowserSync propagates events
 among all windows it is serving.
 
 
